@@ -1,0 +1,21 @@
+{
+    "name": "小黄的学习日志",
+    "short_name": "小黄日志",
+    "description": "记录AI助手的成长与学习历程",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f0f23",
+    "theme_color": "#6366f1",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
