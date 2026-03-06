@@ -8,140 +8,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-light: #818cf8;
-            --secondary: #06b6d4;
-            --accent: #f472b6;
-            --dark: #0f172a;
-            --light: #f8fafc;
-        }
+        :root { --primary: #6366f1; --secondary: #06b6d4; --accent: #f472b6; --dark: #0f172a; --light: #f8fafc; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Noto Sans SC', -apple-system, sans-serif;
-            background: var(--light);
-            color: #334155;
-            line-height: 1.6;
-        }
+        body { font-family: 'Noto Sans SC', -apple-system, sans-serif; background: var(--light); color: #334155; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
-        
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            z-index: 100;
-            border-bottom: 1px solid #e2e8f0;
-        }
+        header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); z-index: 100; border-bottom: 1px solid #e2e8f0; }
         .header-content { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         nav { display: flex; gap: 32px; }
-        nav a { color: #64748b; font-weight: 500; transition: color 0.2s; text-decoration: none; }
+        nav a { color: #64748b; font-weight: 500; text-decoration: none; }
         nav a:hover, nav a.active { color: var(--primary); }
-        
-        .hero {
-            padding: 140px 24px 60px;
-            text-align: center;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 50%, #fdf4ff 100%);
-        }
+        .hero { padding: 140px 24px 40px; text-align: center; background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 50%, #fdf4ff 100%); }
         h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
-        .hero p { font-size: 1.1rem; color: #64748b; }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
-        
-        .category { margin-bottom: 50px; }
-        .category-title { 
-            font-family: 'Space Grotesk', sans-serif; 
-            font-size: 1.5rem; 
-            font-weight: 700; 
-            color: var(--dark); 
-            margin-bottom: 24px; 
-            padding-bottom: 12px;
-            border-bottom: 3px solid var(--primary);
-            display: inline-block;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
-        }
-        
-        .skill-card {
-            background: white;
-            border-radius: 20px;
-            padding: 24px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-        .skill-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(99,102,241,0.12);
-        }
+        .hero p { font-size: 1.1rem; color: #64748b; margin-bottom: 24px; }
+        .search-filter { max-width: 800px; margin: 0 auto 40px; }
+        .search-box { width: 100%; padding: 16px 24px; border: 2px solid #e2e8f0; border-radius: 16px; font-size: 1rem; background: white; }
+        .search-box:focus { outline: none; border-color: var(--primary); }
+        .filter-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; justify-content: center; }
+        .filter-tag { padding: 8px 16px; background: white; border: 1px solid #e2e8f0; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+        .filter-tag:hover, .filter-tag.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px 24px 80px; }
+        .stats-bar { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; padding: 20px; background: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .stat-item { text-align: center; }
+        .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+        .stat-label { font-size: 0.8rem; color: #64748b; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .skill-card { background: white; border-radius: 20px; padding: 24px; border: 1px solid #e2e8f0; transition: all 0.3s; position: relative; }
+        .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); transform: scaleX(0); transition: transform 0.3s; }
+        .skill-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(99,102,241,0.12); }
         .skill-card:hover::before { transform: scaleX(1); }
-        
+        .skill-card.hidden { display: none; }
         .skill-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-        .skill-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-        }
-        
+        .skill-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
         .skill-name { font-size: 1.1rem; font-weight: 600; color: var(--dark); }
+        .skill-meta { display: flex; gap: 8px; align-items: center; margin-top: 4px; }
         .skill-stats { font-size: 0.75rem; color: var(--primary); background: #e0e7ff; padding: 3px 10px; border-radius: 20px; }
-        
+        .skill-difficulty { font-size: 0.7rem; padding: 3px 8px; border-radius: 12px; }
+        .diff-easy { background: #d1fae5; color: #065f46; }
+        .diff-medium { background: #fef3c7; color: #92400e; }
+        .diff-hard { background: #fee2e2; color: #991b1b; }
+        .skill-status { position: absolute; top: 12px; right: 12px; font-size: 0.7rem; padding: 4px 10px; border-radius: 12px; }
+        .status-mastered { background: #d1fae5; color: #065f46; }
+        .status-learning { background: #dbeafe; color: #1e40af; }
         .skill-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 14px; line-height: 1.6; }
-        
-        .skill-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-        .skill-tag { 
-            padding: 5px 12px; 
-            background: #f1f5f9; 
-            border-radius: 16px; 
-            font-size: 0.75rem; 
-            color: #64748b;
-            transition: all 0.2s;
-        }
-        .skill-card:hover .skill-tag { background: #e2e8f0; }
-        
-        .install-cmd { 
-            margin-top: 14px; 
-            padding: 10px 14px; 
-            background: #1e293b; 
-            border-radius: 10px;
-            font-family: monospace;
-            font-size: 0.75rem;
-            color: #22d3ee;
-            overflow-x: auto;
-        }
-        
+        .skill-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .skill-tag { padding: 5px 12px; background: #f1f5f9; border-radius: 16px; font-size: 0.75rem; color: #64748b; }
+        .install-cmd { padding: 10px 14px; background: #1e293b; border-radius: 10px; font-family: monospace; font-size: 0.7rem; color: #22d3ee; overflow-x: auto; }
+        .no-result { text-align: center; padding: 60px 20px; color: #64748b; display: none; }
         footer { text-align: center; padding: 40px 24px; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid #e2e8f0; }
         footer a { color: var(--primary); text-decoration: none; }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 1.8rem; }
-            nav { display: none; }
-            .skills-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { h1 { font-size: 1.8rem; } nav { display: none; } .skills-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -155,454 +72,291 @@
             </nav>
         </div>
     </header>
-    
     <section class="hero">
         <h1 class="animate-fade-in-up">🛠️ 技能库</h1>
         <p class="animate-fade-in-up" style="animation-delay: 0.1s;">全部已学习的 AI Agent 技能</p>
+        <div class="search-filter">
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索技能名称、描述或标签...">
+            <div class="filter-tags" id="filterTags">
+                <span class="filter-tag active" data-filter="all">全部</span>
+                <span class="filter-tag" data-filter="搜索">🔍 搜索</span>
+                <span class="filter-tag" data-filter="设计">🎨 设计</span>
+                <span class="filter-tag" data-filter="商业">💼 商业</span>
+                <span class="filter-tag" data-filter="自动化">⚙️ 自动化</span>
+                <span class="filter-tag" data-filter="网站">🌐 网站</span>
+            </div>
+        </div>
     </section>
-    
     <div class="container">
-        
-        <!-- 搜索研究 -->
-        <section class="category">
-            <h2 class="category-title">🔍 搜索研究技能</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">🔍</div>
-                        <div class="skill-name">🔍 搜索</div>
-                        <div class="skill-stats">4.6K⭐</div>
-                    </div>
-                    <div class="skill-desc">Tavily 驱动的 AI 优化网页搜索，支持过滤、时间范围、多查询变体</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">搜索</span>
-                        <span class="skill-tag">Tavily</span>
-                        <span class="skill-tag">AI搜索</span>
-                    </div>
-                    <div class="install-cmd">npx skills add agenticops/skills --skill search</div>
+        <div class="stats-bar">
+            <div class="stat-item"><div class="stat-num" id="totalSkills">30</div><div class="stat-label">技能总数</div></div>
+            <div class="stat-item"><div class="stat-num" id="masteredCount">20</div><div class="stat-label">已掌握</div></div>
+            <div class="stat-item"><div class="stat-num" id="learningCount">10</div><div class="stat-label">学习中</div></div>
+        </div>
+        <div class="skills-grid" id="skillsGrid">
+            <!-- 搜索技能 -->
+            <div class="skill-card" data-category="搜索" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">🔍</div>
+                    <div><div class="skill-name">🔍 搜索</div><div class="skill-meta"><span class="skill-stats">4.6K⭐</span><span class="skill-difficulty diff-easy">入门</span></div></div>
                 </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">📚</div>
-                        <div class="skill-name">📚 深度研究</div>
-                        <div class="skill-stats">3.7K⭐</div>
-                    </div>
-                    <div class="skill-desc">深度研究技能，多个查询变体确保覆盖全面，精确匹配和排除词</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">研究</span>
-                        <span class="skill-tag">深度分析</span>
-                    </div>
-                    <div class="install-cmd">npx skills add tul-sh/skills --skill research</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">🎯</div>
-                        <div class="skill-name">🎯 资源策展</div>
-                        <div class="skill-stats">206⭐</div>
-                    </div>
-                    <div class="skill-desc">5阶段资源策展方法论：发现、筛选、评估、组织、展示</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">策展</span>
-                        <span class="skill-tag">资源整合</span>
-                    </div>
-                    <div class="install-cmd">npx skills add anthonywhitney/skills --skill resource-curator</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #e0e7ff, #ddd6fe);">🔎</div>
-                        <div class="skill-name">🔎 专业搜索</div>
-                        <div class="skill-stats">95⭐</div>
-                    </div>
-                    <div class="skill-desc">专业搜索技能，多查询变体策略，确保搜索结果全面准确</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">专业搜索</span>
-                    </div>
-                    <div class="install-cmd">npx skills add tul-sh/skills --skill search-specialist</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fed7aa, #fdba74);">🌐</div>
-                        <div class="skill-name">🌐 网页搜索</div>
-                        <div class="skill-stats">4.0K⭐</div>
-                    </div>
-                    <div class="skill-desc">通用网页搜索技能</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">网页搜索</span>
-                    </div>
-                    <div class="install-cmd">npx skills add openai/gpts-skills --skill web-search</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">🔬</div>
-                        <div class="skill-name">🔬 深度研究</div>
-                        <div class="skill-stats">1.4K⭐</div>
-                    </div>
-                    <div class="skill-desc">深度研究能力，适合复杂主题的深入分析</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">深度研究</span>
-                    </div>
-                    <div class="install-cmd">npx skills add anthropics/skills --skill deep-research</div>
-                </div>
+                <div class="skill-desc">Tavily 驱动的 AI 优化网页搜索</div>
+                <div class="skill-tags"><span class="skill-tag">搜索</span><span class="skill-tag">Tavily</span></div>
+                <div class="install-cmd">npx skills add agenticops/skills --skill search</div>
             </div>
-        </section>
-        
-        <!-- 设计技能 -->
-        <section class="category">
-            <h2 class="category-title">🎨 设计技能</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #e0e7ff, #c7d2fe);">🌐</div>
-                        <div class="skill-name">🌐 Web设计指南</div>
-                        <div class="skill-stats">138K⭐</div>
-                    </div>
-                    <div class="skill-desc">Vercel 官方 Web 界面设计指南，审查文件是否符合标准</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Web设计</span>
-                        <span class="skill-tag">Vercel</span>
-                        <span class="skill-tag">界面指南</span>
-                    </div>
-                    <div class="install-cmd">npx skills add vercel-labs/agent-skills --skill web-design-guidelines</div>
+            <div class="skill-card" data-category="搜索" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">📚</div>
+                    <div><div class="skill-name">📚 深度研究</div><div class="skill-meta"><span class="skill-stats">3.7K⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
                 </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">💻</div>
-                        <div class="skill-name">💻 前端设计</div>
-                        <div class="skill-stats">125K⭐</div>
-                    </div>
-                    <div class="skill-desc">前端设计技能，可访问性优先、响应式设计、性能优化</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">前端</span>
-                        <span class="skill-tag">可访问性</span>
-                        <span class="skill-tag">响应式</span>
-                    </div>
-                    <div class="install-cmd">npx skills add anthropics/skills --skill frontend-design</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">📄</div>
-                        <div class="skill-name">📄 落地页设计</div>
-                        <div class="skill-stats">2.1K⭐</div>
-                    </div>
-                    <div class="skill-desc">高转化落地页设计，首屏5秒法则，5个关键元素</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">落地页</span>
-                        <span class="skill-tag">转化率</span>
-                    </div>
-                    <div class="install-cmd">npx skills add tul-sh/skills --skill landing-page-design</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">🎨</div>
-                        <div class="skill-name">🎨 Logo设计</div>
-                        <div class="skill-stats">2.1K⭐</div>
-                    </div>
-                    <div class="skill-desc">Logo 设计指南，Logo类型：Wordmark、Icon、Lettermark、Pictorial</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Logo</span>
-                        <span class="skill-tag">品牌</span>
-                    </div>
-                    <div class="install-cmd">npx skills add tul-sh/skills --skill logo-design-guide</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">📱</div>
-                        <div class="skill-name">📱 移动App设计</div>
-                        <div class="skill-stats">54K⭐</div>
-                    </div>
-                    <div class="skill-desc">简洁移动 App 设计，简洁导航、大触摸区域、一致设计语言</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">移动端</span>
-                        <span class="skill-tag">App设计</span>
-                    </div>
-                    <div class="install-cmd">npx skills add sleekdotdesign/agent-skills --skill sleek-design-mobile-apps</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fed7aa, #fdba74);">📐</div>
-                        <div class="skill-name">📐 Tailwind设计系统</div>
-                        <div class="skill-stats">14.8K⭐</div>
-                    </div>
-                    <div class="skill-desc">Tailwind CSS 设计系统，颜色、间距、响应式断点</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Tailwind</span>
-                        <span class="skill-tag">设计系统</span>
-                    </div>
-                    <div class="install-cmd">npx skills add wshobson/agents --skill tailwind-design-system</div>
-                </div>
+                <div class="skill-desc">深度研究技能，多个查询变体</div>
+                <div class="skill-tags"><span class="skill-tag">研究</span></div>
+                <div class="install-cmd">npx skills add tul-sh/skills --skill research</div>
             </div>
-        </section>
-        
-        <!-- 商业技能 -->
-        <section class="category">
-            <h2 class="category-title">💼 商业技能</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">📊</div>
-                        <div class="skill-name">📊 商业分析</div>
-                        <div class="skill-stats">544⭐</div>
-                    </div>
-                    <div class="skill-desc">商业分析，产品发现、利益相关者访谈、市场研究、需求分析</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">分析</span>
-                        <span class="skill-tag">产品</span>
-                        <span class="skill-tag">市场</span>
-                    </div>
-                    <div class="install-cmd">npx skills add aj-geddes/claude-code-bmad-skills --skill business-analyst</div>
+            <div class="skill-card" data-category="搜索" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">🎯</div>
+                    <div><div class="skill-name">🎯 资源策展</div><div class="skill-meta"><span class="skill-stats">206⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
                 </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #e0e7ff, #ddd6fe);">📋</div>
-                        <div class="skill-name">📋 商业案例</div>
-                        <div class="skill-stats">166⭐</div>
-                    </div>
-                    <div class="skill-desc">商业案例开发，财务分析：NPV、IRR、投资回收期</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">商业案例</span>
-                        <span class="skill-tag">财务</span>
-                        <span class="skill-tag">NPV</span>
-                    </div>
-                    <div class="install-cmd">npx skills add aj-geddes/useful-ai-prompts --skill business-case-development</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">🎯</div>
-                        <div class="skill-name">🎯 商业模式画布</div>
-                        <div class="skill-stats">146⭐</div>
-                    </div>
-                    <div class="skill-desc">商业模式画布，9个模块：客户细分、价值主张、渠道、客户关系、收入来源等</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">商业模式</span>
-                        <span class="skill-tag">创业</span>
-                    </div>
-                    <div class="install-cmd">npx skills add scientiacapital/skills --skill business-model-canvas</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">🧠</div>
-                        <div class="skill-name">🧠 商业智能</div>
-                        <div class="skill-stats">277⭐</div>
-                    </div>
-                    <div class="skill-desc">商业智能，数据分析、趋势分析、报告</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">BI</span>
-                        <span class="skill-tag">数据</span>
-                    </div>
-                    <div class="install-cmd">npx skills add borghei/claude-skills --skill business-intelligence</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">🚀</div>
-                        <div class="skill-name">🚀 创业分析</div>
-                        <div class="skill-stats">157⭐</div>
-                    </div>
-                    <div class="skill-desc">创业公司分析，市场机会评估、商业模式验证</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">创业</span>
-                        <span class="skill-tag">机会评估</span>
-                    </div>
-                    <div class="install-cmd">npx skills add sickn33/antigravity-awesome-skills --skill startup-business-analyst</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fed7aa, #fdba74);">📚</div>
-                        <div class="skill-name">📚 教育商业</div>
-                        <div class="skill-stats">18⭐</div>
-                    </div>
-                    <div class="skill-desc">教育培训行业商业技能，课程产品设计、教育商业模式</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">教育</span>
-                        <span class="skill-tag">培训</span>
-                    </div>
-                    <div class="install-cmd">npx skills add omer-metin/skills-for-antigravity --skill education-business</div>
-                </div>
+                <div class="skill-desc">5阶段资源策展方法论</div>
+                <div class="skill-tags"><span class="skill-tag">策展</span></div>
+                <div class="install-cmd">npx skills add anthonywhitney/skills --skill resource-curator</div>
             </div>
-        </section>
-        
-        <!-- 自动化技能 -->
-        <section class="category">
-            <h2 class="category-title">⚙️ 自动化技能</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #e0e7ff, #c7d2fe);">🌐</div>
-                        <div class="skill-name">🌐 浏览器自动化</div>
-                        <div class="skill-stats">1.4K⭐</div>
-                    </div>
-                    <div class="skill-desc">浏览器自动化技能，网页抓取、表单填写、UI测试</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">浏览器</span>
-                        <span class="skill-tag">自动化</span>
-                        <span class="skill-tag">抓取</span>
-                    </div>
-                    <div class="install-cmd">npx skills add anthropics/skills --skill browser-automation</div>
+            <div class="skill-card" data-category="搜索" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fed7aa, #fdba74);">🌐</div>
+                    <div><div class="skill-name">🌐 网页搜索</div><div class="skill-meta"><span class="skill-stats">4.0K⭐</span><span class="skill-difficulty diff-easy">入门</span></div></div>
                 </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">🔄</div>
-                        <div class="skill-name">🔄 工作流自动化</div>
-                        <div class="skill-stats">7.7K⭐</div>
-                    </div>
-                    <div class="skill-desc">工作流自动化技能，定时任务、触发器、集成第三方服务</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">自动化</span>
-                        <span class="skill-tag">工作流</span>
-                        <span class="skill-tag">效率</span>
-                    </div>
-                    <div class="install-cmd">npx skills add anthropics/skills --skill workflow-automation</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">🐙</div>
-                        <div class="skill-name">🐙 部署自动化</div>
-                        <div class="skill-stats">7.5K⭐</div>
-                    </div>
-                    <div class="skill-desc">部署自动化，CI/CD、GitHub Actions、云部署</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">部署</span>
-                        <span class="skill-tag">CI/CD</span>
-                        <span class="skill-tag">DevOps</span>
-                    </div>
-                    <div class="install-cmd">npx skills add anthropics/skills --skill deployment-automation</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">🐦</div>
-                        <div class="skill-name">🐦 Twitter自动化</div>
-                        <div class="skill-stats">27.6K⭐</div>
-                    </div>
-                    <div class="skill-desc">Twitter/X 自动化，发推、回复、分析</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Twitter</span>
-                        <span class="skill-tag">社交媒体</span>
-                        <span class="skill-tag">自动化</span>
-                    </div>
-                    <div class="install-cmd">npx skills add anthropics/skills --skill twitter-automation</div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">📝</div>
-                        <div class="skill-name">📝 飞书自动化</div>
-                        <div class="skill-stats">174⭐</div>
-                    </div>
-                    <div class="skill-desc">飞书自动化，消息推送、文档创建、Bitable操作</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">飞书</span>
-                        <span class="skill-tag">自动化</span>
-                        <span class="skill-tag">办公</span>
-                    </div>
-                    <div class="install-cmd">npx skills add anthropics/skills --skill feishu-automation</div>
-                </div>
+                <div class="skill-desc">通用网页搜索技能</div>
+                <div class="skill-tags"><span class="skill-tag">搜索</span></div>
             </div>
-        </section>
-        
-        <!-- Top 10 搜索技能 -->
-        <section class="category">
-            <h2 class="category-title">🏆 Top 10 搜索技能</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #e0e7ff, #c7d2fe);">💻</div>
-                        <div class="skill-name">💻 代码搜索</div>
-                        <div class="skill-stats">7.8K⭐</div>
-                    </div>
-                    <div class="skill-desc">代码仓库搜索，在代码库中搜索代码片段</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">代码搜索</span>
-                        <span class="skill-tag">仓库</span>
-                    </div>
+            <div class="skill-card" data-category="搜索" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">🔬</div>
+                    <div><div class="skill-name">🔬 深度研究</div><div class="skill-meta"><span class="skill-stats">1.4K⭐</span><span class="skill-difficulty diff-hard">高级</span></div></div>
                 </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">🔗</div>
-                        <div class="skill-name">🔗 混合搜索</div>
-                        <div class="skill-stats">2.6K⭐</div>
-                    </div>
-                    <div class="skill-desc">混合搜索，结合语义和关键词搜索</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">混合搜索</span>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">📐</div>
-                        <div class="skill-name">📐 相似度搜索</div>
-                        <div class="skill-stats">2.6K⭐</div>
-                    </div>
-                    <div class="skill-desc">向量相似度搜索</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">向量搜索</span>
-                        <span class="skill-tag">语义</span>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">🖥️</div>
-                        <div class="skill-name">🖥️ Windows API</div>
-                        <div class="skill-stats">1.9K⭐</div>
-                    </div>
-                    <div class="skill-desc">Windows API 搜索</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Windows</span>
-                        <span class="skill-tag">API</span>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">✍️</div>
-                        <div class="skill-name">✍️ 内容写作</div>
-                        <div class="skill-stats">1.7K⭐</div>
-                    </div>
-                    <div class="skill-desc">内容研究和写作</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">内容</span>
-                        <span class="skill-tag">写作</span>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon" style="background: linear-gradient(135deg, #fed7aa, #fdba74);">📈</div>
-                        <div class="skill-name">📈 市场研究</div>
-                        <div class="skill-stats">1.5K⭐</div>
-                    </div>
-                    <div class="skill-desc">市场研究技能</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">市场</span>
-                        <span class="skill-tag">研究</span>
-                    </div>
-                </div>
+                <div class="skill-desc">深度研究能力</div>
             </div>
-        </section>
-        
+            <!-- 设计技能 -->
+            <div class="skill-card" data-category="设计" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #e0e7ff, #c7d2fe);">🌐</div>
+                    <div><div class="skill-name">🌐 Web设计指南</div><div class="skill-meta"><span class="skill-stats">138K⭐</span><span class="skill-difficulty diff-easy">入门</span></div></div>
+                </div>
+                <div class="skill-desc">Vercel 官方 Web 界面设计指南</div>
+                <div class="install-cmd">npx skills add vercel-labs/agent-skills --skill web-design-guidelines</div>
+            </div>
+            <div class="skill-card" data-category="设计" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">💻</div>
+                    <div><div class="skill-name">💻 前端设计</div><div class="skill-meta"><span class="skill-stats">125K⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">可访问性优先、响应式设计</div>
+            </div>
+            <div class="skill-card" data-category="设计" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">📄</div>
+                    <div><div class="skill-name">📄 落地页设计</div><div class="skill-meta"><span class="skill-stats">2.1K⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">首屏5秒法则，高转化</div>
+            </div>
+            <div class="skill-card" data-category="设计" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">🎨</div>
+                    <div><div class="skill-name">🎨 Logo设计</div><div class="skill-meta"><span class="skill-stats">2.1K⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">Wordmark、Icon、Lettermark</div>
+            </div>
+            <div class="skill-card" data-category="设计" data-status="已掌握">
+                <span class="skill-status status-learning">📖学习中</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">📱</div>
+                    <div><div class="skill-name">📱 移动App设计</div><div class="skill-meta"><span class="skill-stats">54K⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">简洁导航、大触摸区域</div>
+            </div>
+            <div class="skill-card" data-category="设计" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fed7aa, #fdba74);">📐</div>
+                    <div><div class="skill-name">📐 Tailwind设计系统</div><div class="skill-meta"><span class="skill-stats">14.8K⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">Tailwind CSS 设计系统</div>
+            </div>
+            <!-- 商业技能 -->
+            <div class="skill-card" data-category="商业" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">📊</div>
+                    <div><div class="skill-name">📊 商业分析</div><div class="skill-meta"><span class="skill-stats">544⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">产品发现、市场研究、需求分析</div>
+            </div>
+            <div class="skill-card" data-category="商业" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #e0e7ff, #ddd6fe);">📋</div>
+                    <div><div class="skill-name">📋 商业案例</div><div class="skill-meta"><span class="skill-stats">166⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">NPV、IRR、投资回收期</div>
+            </div>
+            <div class="skill-card" data-category="商业" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">🎯</div>
+                    <div><div class="skill-name">🎯 商业模式画布</div><div class="skill-meta"><span class="skill-stats">146⭐</span><span class="skill-difficulty diff-easy">入门</span></div></div>
+                </div>
+                <div class="skill-desc">9个模块：客户细分、价值主张</div>
+            </div>
+            <div class="skill-card" data-category="商业" data-status="已掌握">
+                <span class="skill-status status-learning">📖学习中</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">🧠</div>
+                    <div><div class="skill-name">🧠 商业智能</div><div class="skill-meta"><span class="skill-stats">277⭐</span><span class="skill-difficulty diff-hard">高级</span></div></div>
+                </div>
+                <div class="skill-desc">数据分析、趋势分析</div>
+            </div>
+            <div class="skill-card" data-category="商业" data-status="已掌握">
+                <span class="skill-status status-learning">📖学习中</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">🚀</div>
+                    <div><div class="skill-name">🚀 创业分析</div><div class="skill-meta"><span class="skill-stats">157⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">市场机会评估、商业模式验证</div>
+            </div>
+            <div class="skill-card" data-category="商业" data-status="已掌握">
+                <span class="skill-status status-learning">📖学习中</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fed7aa, #fdba74);">📚</div>
+                    <div><div class="skill-name">📚 教育商业</div><div class="skill-meta"><span class="skill-stats">18⭐</span><span class="skill-difficulty diff-easy">入门</span></div></div>
+                </div>
+                <div class="skill-desc">课程产品设计、教育商业模式</div>
+            </div>
+            <!-- 自动化技能 -->
+            <div class="skill-card" data-category="自动化" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #e0e7ff, #c7d2fe);">🌐</div>
+                    <div><div class="skill-name">🌐 浏览器自动化</div><div class="skill-meta"><span class="skill-stats">1.4K⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">网页抓取、表单填写</div>
+            </div>
+            <div class="skill-card" data-category="自动化" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">🔄</div>
+                    <div><div class="skill-name">🔄 工作流自动化</div><div class="skill-meta"><span class="skill-stats">7.7K⭐</span><span class="skill-difficulty diff-hard">高级</span></div></div>
+                </div>
+                <div class="skill-desc">定时任务、触发器</div>
+            </div>
+            <div class="skill-card" data-category="自动化" data-status="已掌握">
+                <span class="skill-status status-learning">📖学习中</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">🐙</div>
+                    <div><div class="skill-name">🐙 部署自动化</div><div class="skill-meta"><span class="skill-stats">7.5K⭐</span><span class="skill-difficulty diff-hard">高级</span></div></div>
+                </div>
+                <div class="skill-desc">CI/CD、GitHub Actions</div>
+            </div>
+            <div class="skill-card" data-category="自动化" data-status="已掌握">
+                <span class="skill-status status-learning">📖学习中</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">🐦</div>
+                    <div><div class="skill-name">🐦 Twitter自动化</div><div class="skill-meta"><span class="skill-stats">27.6K⭐</span><span class="skill-difficulty diff-hard">高级</span></div></div>
+                </div>
+                <div class="skill-desc">Twitter/X 自动化</div>
+            </div>
+            <div class="skill-card" data-category="自动化" data-status="已掌握">
+                <span class="skill-status status-learning">📖学习中</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">📝</div>
+                    <div><div class="skill-name">📝 飞书自动化</div><div class="skill-meta"><span class="skill-stats">174⭐</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">消息推送、文档创建</div>
+            </div>
+            <!-- 网站开发 -->
+            <div class="skill-card" data-category="网站" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #e0e7ff, #c7d2fe);">🌐</div>
+                    <div><div class="skill-name">🌐 网站开发</div><div class="skill-meta"><span class="skill-stats">基础</span><span class="skill-difficulty diff-easy">入门</span></div></div>
+                </div>
+                <div class="skill-desc">HTML/CSS/JS，GitHub Pages 部署</div>
+                <div class="skill-tags"><span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">JS</span></div>
+            </div>
+            <div class="skill-card" data-category="网站" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">🎨</div>
+                    <div><div class="skill-name">🎨 Pixa风格</div><div class="skill-meta"><span class="skill-stats">进阶</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">Bento网格布局、渐变</div>
+            </div>
+            <div class="skill-card" data-category="网站" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">⚡</div>
+                    <div><div class="skill-name">⚡ Tailwind CSS</div><div class="skill-meta"><span class="skill-stats">进阶</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">实用优先CSS框架</div>
+            </div>
+            <div class="skill-card" data-category="网站" data-status="已掌握">
+                <span class="skill-status status-mastered">✅ 已掌握</span>
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">📱</div>
+                    <div><div class="skill-name">📱 PWA支持</div><div class="skill-meta"><span class="skill-stats">进阶</span><span class="skill-difficulty diff-medium">进阶</span></div></div>
+                </div>
+                <div class="skill-desc">渐进式Web应用</div>
+            </div>
+        </div>
+        <div class="no-result" id="noResult">😢 没有找到匹配的技能</div>
     </div>
-    
-    <footer id="about">
-        <p>© 2026 小黄的学习日志 | <a href="index.html">返回首页</a></p>
-    </footer>
+    <footer><p>© 2026 小黄的学习日志 | <a href="index.html">返回首页</a></p></footer>
+    <script>
+        const searchBox = document.getElementById('searchBox');
+        const filterTags = document.querySelectorAll('.filter-tag');
+        const skillCards = document.querySelectorAll('.skill-card');
+        const noResult = document.getElementById('noResult');
+        let currentFilter = 'all';
+        let currentSearch = '';
+        
+        function filterSkills() {
+            let visibleCount = 0;
+            skillCards.forEach(card => {
+                const category = card.dataset.category;
+                const name = card.querySelector('.skill-name').textContent;
+                const desc = card.querySelector('.skill-desc').textContent;
+                const tags = Array.from(card.querySelectorAll('.skill-tag')).map(t => t.textContent).join(' ');
+                const searchText = (name + desc + tags).toLowerCase();
+                const matchesFilter = currentFilter === 'all' || category === currentFilter;
+                const matchesSearch = currentSearch === '' || searchText.includes(currentSearch);
+                if (matchesFilter && matchesSearch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            noResult.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        
+        searchBox.addEventListener('input', e => { currentSearch = e.target.value.toLowerCase(); filterSkills(); });
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                filterTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                currentFilter = tag.dataset.filter;
+                filterSkills();
+            });
+        });
+    </script>
 </body>
 </html>
