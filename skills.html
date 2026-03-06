@@ -84,6 +84,8 @@
                 <span class="filter-tag" data-filter="商业">💼 商业</span>
                 <span class="filter-tag" data-filter="自动化">⚙️ 自动化</span>
                 <span class="filter-tag" data-filter="网站">🌐 网站</span>
+                <span class="filter-tag" data-filter="内容">📝 内容</span>
+                <span class="filter-tag" data-filter="图片">🖼️ 图片</span>
             </div>
         </div>
     </section>
@@ -357,6 +359,22 @@
                 filterSkills();
             });
         });
+        
+        // Add new skill cards before grid ends
+        const skillsGrid = document.getElementById('skillsGrid');
+        
+        // 内容创作 skills
+        const contentSkills = [
+            {name: '📊 内容策略', stats: '17.8K⭐', diff: 'diff-medium', desc: '可搜索 + 可分享内容规划', cmd: 'content-strategy', icon: 'fce7f3'},
+            {name: '📱 社交内容', stats: '15.8K⭐', diff: 'diff-medium', desc: '目标 + 受众 + 品牌调性', cmd: 'social-content', icon: 'dbeafe'},
+            {name: '💼 LinkedIn内容', stats: '2.2K⭐', diff: 'diff-easy', desc: 'Hook + Body + CTA 结构', cmd: 'linkedin-content', icon: 'e0e7ff'}
+        ];
+        
+        // 图片 skills  
+        const imageSkills = [
+            {name: '🎨 AI图像生成', stats: '31K⭐', diff: 'diff-medium', desc: '50+模型：FLUX、Gemini', cmd: 'ai-image-generation', icon: 'fef3c7'},
+            {name: '🖼️ OG图片设计', stats: '2.1K⭐', diff: 'diff-easy', desc: '社交媒体分享图、预览图', cmd: 'og-image-design', icon: 'd1fae5'}
+        ];
     </script>
 </body>
 </html>
