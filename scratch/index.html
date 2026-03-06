@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scratch编程 - 少儿图形化编程</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans SC', sans-serif; background: #f8fafc; color: #334155; line-height: 1.6; }
+header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); padding: 16px 24px; border-bottom: 1px solid #e2e8f0; }
+.logo { font-size: 1.5rem; font-weight: 700; color: #ffab00; }
+.hero { padding: 160px 24px 80px; text-align: center; background: linear-gradient(135deg, #fff7ed, #ffedd5); }
+h1 { font-size: 3rem; font-weight: 700; color: #0f172a; margin-bottom: 16px; }
+p { font-size: 1.2rem; color: #64748b; margin-bottom: 32px; }
+.btn { display: inline-block; padding: 16px 32px; background: linear-gradient(135deg, #ffab00, #ff6600); color: white; font-weight: 600; border-radius: 12px; text-decoration: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 60px 24px; }
+.section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 40px; color: #0f172a; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 60px; }
+.feature { background: white; border-radius: 20px; padding: 32px; text-align: center; border: 1px solid #e2e8f0; }
+.feature-icon { font-size: 48px; margin-bottom: 16px; }
+.feature h3 { font-size: 1.2rem; margin-bottom: 12px; color: #0f172a; }
+.courses { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
+.course { background: white; border-radius: 20px; overflow: hidden; border: 1px solid #e2e8f0; }
+.course-header { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 60px; }
+.course-body { padding: 24px; }
+.course h3 { font-size: 1.3rem; margin-bottom: 12px; color: #0f172a; }
+.course p { font-size: 0.9rem; color: #64748b; margin-bottom: 16px; }
+.tag { display: inline-block; padding: 4px 12px; background: #f1f5f9; border-radius: 12px; font-size: 0.75rem; color: #64748b; margin-right: 8px; }
+.cta { text-align: center; padding: 60px; background: linear-gradient(135deg, #fff7ed, #ffedd5); border-radius: 24px; margin-bottom: 60px; }
+.about { background: white; padding: 40px; border-radius: 20px; border: 1px solid #e2e8f0; max-width: 800px; margin: 0 auto; }
+footer { text-align: center; padding: 40px; color: #94a3b8; border-top: 1px solid #e2e8f0; }
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🧑💻 Scratch编程</div>
+</header>
+
+<section class="hero">
+<h1>🧑💻 Scratch编程</h1>
+<p>6-12岁少儿图形化编程入门</p>
+<a href="https://www.scratch5.com/" target="_blank" class="btn">🕐 立即开始编程</a>
+</section>
+
+<div class="container">
+<section>
+<h2 class="section-title">✨ Scratch特点</h2>
+<div class="features">
+<div class="feature">
+<div class="feature-icon">🧱</div>
+<h3>积木式编程</h3>
+<p>像搭积木一样拖拽代码块，无需打字就能写程序</p>
+</div>
+<div class="feature">
+<div class="feature-icon">🎮</div>
+<h3>趣味性强</h3>
+<p>制作游戏、动画、故事，让学习变得有趣</p>
+</div>
+<div class="feature">
+<div class="feature-icon">👨‍👩‍👧</div>
+<h3>适合少儿</h3>
+<p>专为6-12岁孩子设计，界面友好易上手</p>
+</div>
+<div class="feature">
+<div class="feature-icon">🌐</div>
+<h3>免费开源</h3>
+<p>完全免费，在家就能学，无需安装</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">📚 Scratch课程体系</h2>
+<div class="courses">
+<div class="course">
+<div class="course-header" style="background:#fef3c7;">🌱</div>
+<div class="course-body">
+<h3>Scratch 入门</h3>
+<p>认识界面，学习基础积木块用法</p>
+<span class="tag">零基础</span>
+<span class="tag">6-8岁</span>
+<span class="tag">8课时</span>
+</div>
+</div>
+<div class="course">
+<div class="course-header" style="background:#dbeafe;">🎯</div>
+<div class="course-body">
+<h3>Scratch 基础</h3>
+<p>掌握顺序、循环、条件判断</p>
+<span class="tag">入门</span>
+<span class="tag">7-9岁</span>
+<span class="tag">16课时</span>
+</div>
+</div>
+<div class="course">
+<div class="course-header" style="background:#d1fae5;">🎮</div>
+<div class="course-body">
+<h3>Scratch 进阶</h3>
+<p>变量、列表、克隆，做出小游戏</p>
+<span class="tag">进阶</span>
+<span class="tag">8-10岁</span>
+<span class="tag">24课时</span>
+</div>
+</div>
+<div class="course">
+<div class="course-header" style="background:#fce7f3;">🚀</div>
+<div class="course-body">
+<h3>Scratch 精通</h3>
+<p>复杂逻辑算法，创作完整项目</p>
+<span class="tag">精通</span>
+<span class="tag">9-12岁</span>
+<span class="tag">32课时</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<h2>🎉 开启编程之旅</h2>
+<p>点击下方按钮立即开始Scratch编程之旅！</p>
+<a href="https://www.scratch5.com/" target="_blank" class="btn">🕐 开始编程</a>
+</section>
+
+<section class="about">
+<h2 class="section-title">📖 什么是Scratch？</h2>
+<p style="font-size:1.1rem;line-height:2;color:#475569;">
+Scratch是由<span style="color:#ffab00;font-weight:600;">麻省理工学院(MIT)</span>研发的少儿图形化编程工具。
+通过拖拽积木块的方式，孩子可以轻松创建<span style="color:#ff6600;font-weight:600;">动画、游戏、故事</span>等互动作品。
+<br><br>
+全球已有<span style="color:#ffab00;font-weight:600;">超过1亿</span>孩子在学习Scratch，它被翻译成<span style="color:#ff6600;font-weight:600;">70+种语言</span>，
+是少儿编程启蒙的最佳选择。
+</p>
+</section>
+</div>
+
+<footer>
+<p>© 2026 Scratch编程 | 适合6-12岁少儿 | <a href="https://www.scratch5.com/" target="_blank">scratch5.com</a></p>
+</footer>
+</body>
+</html>
