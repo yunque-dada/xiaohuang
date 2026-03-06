@@ -17,8 +17,16 @@
         .header-content { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         nav { display: flex; gap: 32px; }
-        nav a { color: #64748b; font-weight: 500; text-decoration: none; }
+        nav a { color: #64748b; font-weight: 500; text-decoration: none; font-size: 1rem; }
         nav a:hover, nav a.active { color: var(--primary); }
+        .mobile-nav-toggle { display: none; }
+        
+        @media (max-width: 768px) {
+            nav { display: none; }
+            nav.mobile-open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: white; padding: 20px; gap: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+            nav.mobile-open a { padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
+            .mobile-nav-toggle { display: block; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        }
         .hero { padding: 140px 24px 40px; text-align: center; background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 50%, #fdf4ff 100%); }
         h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
         .hero p { font-size: 1.1rem; color: #64748b; margin-bottom: 24px; }
@@ -65,6 +73,7 @@
     <header>
         <div class="header-content">
             <a href="index.html" class="logo">💛 小黄的学习日志</a>
+            <button class="mobile-nav-toggle" onclick="document.querySelector('nav').classList.toggle('mobile-open')">☰</button>
             <nav>
                 <a href="index.html">🏠 首页</a>
                 <a href="skills.html" class="active">🛠️ 技能库</a>
