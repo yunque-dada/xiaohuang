@@ -12,7 +12,8 @@
         body{font-family:'Noto Sans SC',sans-serif;background:#f8fafc;color:#334155;line-height:1.7}
         header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.95);z-index:100;border-bottom:1px solid #e2e8f0}
         .header-content{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
-        .logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--p),var(--s));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--p),var(--s));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:flex;align-items:center;gap:8px}
+        .nav-logo{height:36px;border-radius:8px}
         nav{display:flex;gap:32px}
         nav a{color:#64748b;font-weight:500}
         .hero{padding:80px 24px 80px;text-align:center;background:linear-gradient(135deg,#f0f9ff,#e0e7ff)}
@@ -89,8 +90,8 @@
     </style>
 </head>
 <body>
-<header><div class="header-content"><div class="logo">乐造AI</div><nav><a href="#features">特色</a><a href="#courses">课程</a><a href="#about">关于</a><a href="#contact">报名</a></nav></div></header>
-<section class="hero"><img src="img/logo.jpg" alt="乐造AI科技教育中心" class="hero-img"><h1>乐造AI科技教育中心</h1><p>专注少儿编程教育，激发孩子创造力</p><a href="#contact" class="btn">预约试听课</a></section>
+<header><div class="header-content"><div class="logo"><img src="img/logo.jpg" alt="乐造AI" class="nav-logo">乐造AI</div><nav><a href="#features">特色</a><a href="#courses">课程</a><a href="#about">关于</a><a href="#contact">报名</a></nav></div></header>
+<section class="hero"><h1>乐造AI科技教育中心</h1><p>专注少儿编程教育，激发孩子创造力</p><a href="#contact" class="btn">预约试听课</a></section>
 <section class="features" id="features"><div class="section-title"><h2>为什么选择我们？</h2><p>专业、有趣、启智</p></div><div class="features-grid"><div class="feature-card"><div class="feature-icon" style="background:#e0e7ff">🎯</div><h3>小班精品教学</h3><p>每班严格控制在8人以内，确保每位孩子都能得到老师充分的关注。</p></div><div class="feature-card"><div class="feature-icon" style="background:#d1fae5">🏆</div><h3>竞赛获奖保障</h3><p>专业竞赛辅导团队，累计获得60+奖项。</p></div><div class="feature-card"><div class="feature-icon" style="background:#fef3c7">👨‍🏫</div><h3>资深师资团队</h3><p>全员本科及以上学历，5年以上编程教育经验。</p></div></div></section>
 <section class="courses" id="courses"><div class="section-title"><h2>课程体系</h2><p>完整课程大纲，清晰学习路径</p></div>
 
