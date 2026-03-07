@@ -3,132 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>乐造AI科技教育中心 | 河源少儿编程培训</title>
+    <title>乐造AI少儿编程 | 河源6-16岁少儿编程培训</title>
+    <meta name="description" content="乐造AI少儿编程，专注6-16岁儿童编程教育。Scratch、Python、C++信奥赛辅导，让孩子在快乐中学习编程！">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Noto Sans SC',sans-serif;background:#fff;color:#1e293b;line-height:1.7}
+        :root {
+            /* 明亮温暖配色 - 蓝绿+橙黄主调 */
+            --primary: #06b6d4;      /* 青色 */
+            --primary-dark: #0891b2;
+            --secondary: #f59e0b;    /* 橙色 */
+            --accent: #10b981;       /* 绿色 */
+            --warm-yellow: #fbbf24;  /* 暖黄 */
+            --happy-pink: #f472b6;   /* 活泼粉 */
+            --soft-bg: #fefce8;       /* 暖白背景 */
+        }
         
-        /* 字体 */
-        .font-kid{font-family:'ZCOOL KuaiLe','Noto Sans SC',sans-serif}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Quicksand','Noto Sans SC',sans-serif;background:#fff;color:#1e293b;line-height:1.7}
+        
+        /* 圆润字体 */
+        .font-rounded{font-family:'Quicksand',sans-serif}
+        .font-kid{font-family:'ZCOOL KuaiLe','Quicksand',sans-serif}
         
         /* 导航 */
-        header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);z-index:100;border-bottom:1px solid rgba(0,0,0,0.06)}
+        header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);z-index:100;box-shadow:0 2px 20px rgba(6,182,212,0.1)}
         .header-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;justify-content:space-between;align-items:center}
         .logo-wrap{display:flex;align-items:center;gap:12px}
-        .logo-img{height:48px;border-radius:14px;box-shadow:0 4px 15px rgba(59,130,246,0.2)}
-        .logo-text{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        nav{display:flex;gap:32px;align-items:center}
-        nav a{color:#475569;font-weight:500;font-size:0.95rem;text-decoration:none;transition:all 0.2s;position:relative}
-        nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,#3b82f6,#8b5cf6);transition:width 0.3s}
-        nav a:hover{color:#3b82f6}
+        .logo-img{height:52px;border-radius:16px;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
+        .logo-text{font-size:1.6rem;font-weight:700;background:linear-gradient(135deg,#06b6d4,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        nav{display:flex;gap:28px;align-items:center}
+        nav a{color:#475569;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.3s;position:relative;padding:8px 0}
+        nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:linear-gradient(90deg,#06b6d4,#10b981);border-radius:2px;transition:width 0.3s}
+        nav a:hover{color:#06b6d4}
         nav a:hover::after{width:100%}
         
-        /* 按钮 */
-        .btn{ display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-weight:600;text-decoration:none;transition:all 0.3s }
-        .btn-primary{background:linear-gradient(135deg,#3b82f6,#6366f1);color:white;box-shadow:0 4px 20px rgba(59,130,246,0.35)}
-        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,0.45)}
-        .btn-white{background:white;color:#3b82f6}
+        /* 圆润按钮 - 活泼动画 */
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:600;text-decoration:none;transition:all 0.3s;font-size:1rem}
+        .btn-primary{background:linear-gradient(135deg,#06b6d4,#10b981);color:white;box-shadow:0 6px 25px rgba(6,182,212,0.4)}
+        .btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 35px rgba(6,182,212,0.5)}
+        .btn-secondary{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:white;box-shadow:0 6px 25px rgba(245,158,11,0.4)}
+        .btn-secondary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 35px rgba(245,158,11,0.5)}
+        .btn-white{background:white;color:#06b6d4;border:2px solid #06b6d4}
+        .btn-white:hover{background:#06b6d4;color:white}
         
-        /* 英雄区 */
-        .hero{min-height:100vh;display:flex;align-items:center;padding:100px 24px 80px;background:linear-gradient(135deg,#f8fafc 0%,#eff6ff 40%,#e0e7ff 100%);position:relative;overflow:hidden}
-        .hero::before{content:'';position:absolute;top:-50%;right:-20%;width:800px;height:800px;background:radial-gradient(circle,rgba(139,92,246,0.1) 0%,transparent 70%);border-radius:50%}
-        .hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,0.08) 0%,transparent 70%);border-radius:50%}
-        .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.15fr 0.85fr;gap:80px;align-items:center;position:relative;z-index:1}
-        .hero-content h1{font-size:3.5rem;font-weight:700;line-height:1.15;margin-bottom:24px;color:#0f172a}
-        .hero-content h1 span{background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .hero-content .subtitle{font-size:1.25rem;color:#64748b;margin-bottom:36px;line-height:1.8}
+        /* 英雄区 - 明亮活泼 */
+        .hero{min-height:100vh;display:flex;align-items:center;padding:100px 24px 80px;background:linear-gradient(135deg,#fefce8 0%,#e0fbff 50%,#d1fae5 100%);position:relative;overflow:hidden}
+        .hero::before{content:'🤖';position:absolute;top:15%;left:5%;font-size:5rem;opacity:0.15;animation:float 4s ease-in-out infinite}
+        .hero::after{content:'🚀';position:absolute;bottom:20%;right:8%;font-size:4rem;opacity:0.15;animation:float 5s ease-in-out infinite 1s}
+        @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(5deg)}}
+        .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr;gap:60px;align-items:center;position:relative;z-index:1}
+        .hero-content h1{font-size:3.2rem;font-weight:700;line-height:1.2;margin-bottom:20px;color:#0f172a}
+        .hero-content h1 span{background:linear-gradient(135deg,#06b6d4,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero-content .subtitle{font-size:1.2rem;color:#64748b;margin-bottom:32px;line-height:1.8}
         .hero-tags{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px}
-        .hero-tag{padding:8px 18px;background:white;border-radius:50px;font-size:0.9rem;color:#475569;box-shadow:0 2px 10px rgba(0,0,0,0.05);display:flex;align-items:center;gap:6px}
+        .hero-tag{padding:10px 20px;background:white;border-radius:50px;font-size:0.9rem;color:#475569;box-shadow:0 3px 15px rgba(0,0,0,0.08);display:flex;align-items:center;gap:6px;border:2px solid #e0f2fe}
+        .hero-tag strong{color:#06b6d4}
         .hero-btns{display:flex;gap:16px;flex-wrap:wrap}
         
-        /* 装饰元素 */
-        .floating{animation:floating 3s ease-in-out infinite}
-        @keyframes floating{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        
+        /* 学员卡片 - 活泼 */
         .hero-visual{position:relative}
-        .hero-card{background:white;border-radius:24px;padding:24px;box-shadow:0 25px 60px rgba(59,130,246,0.15),0 0 0 1px rgba(255,255,255,0.5);position:relative}
-        .hero-card-top{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #f1f5f9}
-        .hero-card-avatar{width:50px;height:50px;background:linear-gradient(135deg,#3b82f6,#6366f1);border-radius:14px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.5rem}
-        .hero-card-info h4{font-size:1rem;font-weight:600;color:#1e293b}
-        .hero-card-info span{font-size:0.85rem;color:#94a3b8}
-        .hero-card-body{font-size:0.95rem;color:#475569;line-height:1.8}
-        .code-block{background:#1e293b;border-radius:12px;padding:16px;margin-top:16px;font-family:monospace;font-size:0.85rem;color:#a5b4fc;line-height:1.6}
+        .hero-card{background:white;border-radius:28px;padding:28px;box-shadow:0 25px 60px rgba(6,182,212,0.2),0 0 0 4px rgba(6,182,212,0.1);position:relative;transform:rotate(-2deg)}
+        .hero-card:hover{transform:rotate(0deg) scale(1.02)}
+        .hero-card::before{content:'✨';position:absolute;top:-15px;right:-15px;font-size:2.5rem}
+        .hero-card-top{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px dashed #e0f2fe}
+        .hero-card-avatar{width:56px;height:56px;background:linear-gradient(135deg,#06b6d4,#10b981);border-radius:16px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.8rem}
+        .hero-card-info h4{font-size:1.1rem;font-weight:700;color:#1e293b}
+        .hero-card-info span{font-size:0.85rem;color:#06b6d4;font-weight:600}
+        .hero-card-body{font-size:1rem;color:#475569;line-height:1.8;margin-bottom:16px}
+        .code-block{background:linear-gradient(135deg,#1e293b,#334155);border-radius:16px;padding:18px;font-family:monospace;font-size:0.85rem;color:#a5f3fc;line-height:1.6;border:3px solid #06b6d4}
         .code-block .keyword{color:#c084fc}
         .code-block .string{color:#86efac}
         
-        /* 特点 */
-        .features{padding:120px 24px;background:white;position:relative}
-        .section-header{text-align:center;max-width:640px;margin:0 auto 64px}
-        .section-label{display:inline-block;padding:6px 16px;background:linear-gradient(135deg,#dbeafe,#ede9fe);color:#6366f1;border-radius:50px;font-size:0.85rem;font-weight:500;margin-bottom:16px}
-        .section-header h2{font-size:2.6rem;font-weight:700;margin-bottom:16px;color:#0f172a}
-        .section-header p{font-size:1.15rem;color:#64748b}
+        /* 特点区 */
+        .features{padding:100px 24px;background:white;position:relative}
+        .features::before{content:'🌟';position:absolute;top:30px;left:10%;font-size:3rem;opacity:0.1}
+        .section-header{text-align:center;max-width:640px;margin:0 auto 56px}
+        .section-label{display:inline-block;padding:8px 20px;background:linear-gradient(135deg,#d1fae5,#ccfbf6);color:#059669;border-radius:50px;font-size:0.9rem;font-weight:600;margin-bottom:16px}
+        .section-header h2{font-size:2.4rem;font-weight:700;margin-bottom:16px;color:#0f172a}
+        .section-header p{font-size:1.1rem;color:#64748b}
         
-        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1200px;margin:0 auto}
-        .feature-card{background:linear-gradient(135deg,#f8fafc,#f1f5f9);border-radius:24px;padding:40px 32px;text-align:center;transition:all 0.4s;border:1px solid #f1f5f9}
-        .feature-card:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(0,0,0,0.1);background:white}
-        .feature-icon{width:80px;height:80px;margin:0 auto 24px;background:white;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;box-shadow:0 8px 25px rgba(59,130,246,0.12)}
-        .feature-card h3{font-size:1.35rem;font-weight:600;margin-bottom:12px;color:#1e293b}
+        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1100px;margin:0 auto}
+        .feature-card{background:linear-gradient(145deg,#ffffff,#f0fdfa);border-radius:24px;padding:36px 28px;text-align:center;transition:all 0.4s;border:3px solid transparent}
+        .feature-card:hover{transform:translateY(-10px) scale(1.02);border-color:#06b6d4;box-shadow:0 25px 50px rgba(6,182,212,0.2)}
+        .feature-icon{width:85px;height:85px;margin:0 auto 20px;background:linear-gradient(135deg,#ccfbf6,#d1fae5);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;box-shadow:0 8px 25px rgba(6,182,212,0.2)}
+        .feature-card h3{font-size:1.3rem;font-weight:700;margin-bottom:12px;color:#1e293b}
         .feature-card p{color:#64748b;font-size:0.95rem;line-height:1.7}
         
-        /* 课程 */
-        .courses{padding:120px 24px;background:linear-gradient(180deg,#f8fafc 0%,#f1f5f9 100%)}
-        .course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1200px;margin:0 auto}
-        .course-card{background:white;border-radius:24px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.4s;border:1px solid #e2e8f0}
-        .course-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.12)}
-        .course-header{height:160px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden}
-        .course-header.scratch{background:linear-gradient(135deg,#ff6b6b,#ffa500)}
-        .course-header.python{background:linear-gradient(135deg,#3b82f6,#06b6d4)}
-        .course-header.cpp{background:linear-gradient(135deg,#8b5cf6,#d946ef)}
-        .course-header::after{content:'';position:absolute;inset:0;background:linear-gradient(45deg,rgba(255,255,255,0.2) 0%,transparent 100%)}
-        .course-body{padding:28px}
-        .course-level{display:inline-block;padding:5px 14px;background:#f1f5f9;color:#64748b;border-radius:50px;font-size:0.8rem;font-weight:500;margin-bottom:12px}
-        .course-level.scratch{background:#fee2e2;color:#dc2626}
-        .course-level.python{background:#dbeafe;color:#2563eb}
+        /* 课程区 - 卡片式 */
+        .courses{padding:100px 24px;background:linear-gradient(180deg,#f0fdfa 0%,#ecfeff 100%)}
+        .course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1100px;margin:0 auto}
+        .course-card{background:white;border-radius:28px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);transition:all 0.4s;border:3px solid transparent}
+        .course-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 25px 50px rgba(6,182,212,0.25);border-color:#06b6d4}
+        .course-header{height:150px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;position:relative;overflow:hidden}
+        .course-header::after{content:'';position:absolute;inset:0;background:linear-gradient(45deg,rgba(255,255,255,0.3) 0%,transparent 100%)}
+        .course-header.scratch{background:linear-gradient(135deg,#f472b6,#fb7185)}
+        .course-header.python{background:linear-gradient(135deg,#06b6d4,#10b981)}
+        .course-header.cpp{background:linear-gradient(135deg,#8b5cf6,#a855f7)}
+        .course-header .emoji{position:relative;z-index:1}
+        .course-body{padding:24px}
+        .course-level{display:inline-block;padding:6px 16px;background:#f0fdfa;color:#059669;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:12px}
+        .course-level.scratch{background:#fce7f3;color:#db2777}
+        .course-level.python{background:#d1fae5;color:#059669}
         .course-level.cpp{background:#ede9fe;color:#7c3aed}
-        .course-card h3{font-size:1.4rem;font-weight:600;margin-bottom:10px;color:#1e293b}
-        .course-card > p{color:#64748b;font-size:0.95rem;margin-bottom:20px;line-height:1.6}
-        .course-info{display:flex;gap:20px;padding-top:16px;border-top:1px solid #f1f5f9;font-size:0.85rem;color:#94a3b8}
+        .course-card h3{font-size:1.35rem;font-weight:700;margin-bottom:10px;color:#1e293b}
+        .course-card > p{color:#64748b;font-size:0.95rem;margin-bottom:18px;line-height:1.6}
+        .course-info{display:flex;gap:16px;padding-top:16px;border-top:2px dashed #f0fdfa;font-size:0.85rem;color:#06b6d4;font-weight:600}
         .course-info span{display:flex;align-items:center;gap:6px}
         
-        /* 关于 */
-        .about{padding:120px 24px;background:white}
-        .about-inner{max-width:900px;margin:0 auto;text-align:center}
-        .about h2{font-size:2.6rem;font-weight:700;margin-bottom:24px;color:#0f172a}
-        .about p{font-size:1.15rem;color:#64748b;line-height:1.9;margin-bottom:40px}
-        .about-stats{display:flex;justify-content:center;gap:60px}
-        .stat-item{text-align:center}
-        .stat-num{font-size:3rem;font-weight:700;background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .stat-label{font-size:1rem;color:#94a3b8}
+        /* 校区环境 */
+        .campus{padding:100px 24px;background:white}
+        .campus-show{position:relative;max-width:950px;margin:0 auto 50px;border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.15);border:4px solid #06b6d4}
+        .campus-hero-img{width:100%;display:block}
+        .campus-overlay{position:absolute;bottom:0;left:0;right:0;padding:36px;background:linear-gradient(transparent,rgba(6,182,212,0.9))}
+        .campus-badge{display:flex;align-items:center;gap:14px;background:white;padding:18px 26px;border-radius:20px;max-width:420px;box-shadow:0 8px 25px rgba(0,0,0,0.2)}
+        .badge-icon{font-size:2.5rem}
+        .badge-text h4{font-size:1.2rem;font-weight:700;color:#0f172a;margin-bottom:4px}
+        .badge-text p{font-size:0.85rem;color:#64748b}
+        .campus-features{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+        .campus-feature{display:flex;align-items:center;gap:10px;padding:14px 24px;background:linear-gradient(135deg,#f0fdfa,#d1fae5);border-radius:50px;box-shadow:0 4px 15px rgba(6,182,212,0.2);transition:all 0.3s}
+        .campus-feature:hover{transform:scale(1.05);box-shadow:0 8px 25px rgba(6,182,212,0.3)}
+        .cf-icon{font-size:1.5rem}
+        .cf-text{font-size:1rem;font-weight:600;color:#0f172a}
         
-        /* 联系 */
-        .contact{padding:120px 24px;background:linear-gradient(135deg,#1e293b,#334155);position:relative;overflow:hidden}
-        .contact::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+        /* 荣誉展示 - 新增 */
+        .honors{padding:100px 24px;background:linear-gradient(135deg,#fffbeb,#fef3c7)}
+        .honors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1000px;margin:0 auto}
+        .honor-card{background:white;border-radius:20px;padding:24px;text-align:center;box-shadow:0 8px 25px rgba(245,158,11,0.15);transition:all 0.3s;border:3px solid #fbbf24}
+        .honor-card:hover{transform:scale(1.05);box-shadow:0 15px 40px rgba(245,158,11,0.3)}
+        .honor-icon{font-size:3rem;margin-bottom:12px}
+        .honor-card h4{font-size:1.1rem;font-weight:700;color:#92400e;margin-bottom:8px}
+        .honor-card p{font-size:0.9rem;color:#b45309}
+        
+        /* 关于 */
+        .about{padding:100px 24px;background:white}
+        .about-inner{max-width:900px;margin:0 auto;text-align:center}
+        .about h2{font-size:2.4rem;font-weight:700;margin-bottom:20px;color:#0f172a}
+        .about p{font-size:1.1rem;color:#64748b;line-height:1.9;margin-bottom:40px}
+        .about-stats{display:flex;justify-content:center;gap:50px}
+        .stat-item{text-align:center;padding:24px 36px;background:linear-gradient(135deg,#f0fdfa,#d1fae5);border-radius:24px;box-shadow:0 8px 25px rgba(6,182,212,0.2)}
+        .stat-num{font-size:2.8rem;font-weight:700;background:linear-gradient(135deg,#06b6d4,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .stat-label{font-size:1rem;color:#059669;font-weight:600}
+        
+        /* 联系区 */
+        .contact{padding:100px 24px;background:linear-gradient(135deg,#06b6d4,#10b981);position:relative;overflow:hidden}
+        .contact::before{content:'🎮';position:absolute;top:10%;left:5%;font-size:6rem;opacity:0.15}
+        .contact::after{content:'💻';position:absolute;bottom:10%;right:5%;font-size:5rem;opacity:0.15}
         .contact-inner{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:1}
-        .contact h2{font-size:2.8rem;font-weight:700;margin-bottom:16px;color:white}
-        .contact p{font-size:1.2rem;color:rgba(255,255,255,0.7);margin-bottom:40px}
+        .contact h2{font-size:2.6rem;font-weight:700;margin-bottom:16px;color:white}
+        .contact p{font-size:1.2rem;color:rgba(255,255,255,0.9);margin-bottom:40px}
         
         /* 页脚 */
-        footer{background:#0f172a;color:rgba(255,255,255,0.5);padding:32px 24px;text-align:center;font-size:0.9rem}
+        footer{background:#0f172a;color:rgba(255,255,255,0.6);padding:28px 24px;text-align:center;font-size:0.9rem}
+        footer a{color:#06b6d4;text-decoration:none}
         
+        /* 响应式 */
         @media(max-width:1024px){
-            .hero-inner{grid-template-columns:1fr;text-align:center;gap:60px}
+            .hero-inner{grid-template-columns:1fr;text-align:center;gap:50px}
             .hero-btns{justify-content:center}
             .hero-tags{justify-content:center}
-            .features-grid{grid-template-columns:1fr;max-width:500px}
-            .course-grid{grid-template-columns:1fr;max-width:450px}
-            .about-stats{flex-wrap:wrap;gap:40px}
+            .features-grid{grid-template-columns:1fr;max-width:450px}
+            .course-grid{grid-template-columns:1fr;max-width:400px}
+            .honors-grid{grid-template-columns:repeat(2,1fr);max-width:600px}
+            .about-stats{flex-wrap:wrap;gap:20px}
         }
-        
         @media(max-width:768px){
             .header-inner{padding:10px 16px}
-            nav{gap:16px}
-            nav a{font-size:0.85rem}
-            .hero-content h1{font-size:2.4rem}
-            .section-header h2{font-size:2rem}
+            nav{gap:14px}
+            nav a{font-size:0.8rem}
+            .hero-content h1{font-size:2.2rem}
+            .section-header h2{font-size:1.8rem}
+            .campus-features{gap:10px}
+            .campus-feature{padding:10px 16px}
         }
     </style>
 </head>
@@ -136,15 +184,16 @@
     <header>
         <div class="header-inner">
             <div class="logo-wrap">
-                <img src="img/logo.jpg" alt="乐造AI" class="logo-img">
+                <img src="img/logo.jpg" alt="乐造AI少儿编程" class="logo-img">
                 <span class="logo-text">乐造AI</span>
             </div>
             <nav>
-                <a href="#features">特色</a>
-                <a href="#courses">课程</a>
-                <a href="#campus">环境</a>
-                <a href="#about">关于</a>
-                <a href="#contact" class="btn btn-primary">预约试听</a>
+                <a href="#features">为什么选择</a>
+                <a href="#courses">课程体系</a>
+                <a href="#campus">校区环境</a>
+                <a href="#honors">学员荣誉</a>
+                <a href="#about">关于我们</a>
+                <a href="#contact" class="btn btn-secondary">免费试听</a>
             </nav>
         </div>
     </header>
@@ -152,16 +201,17 @@
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-content">
-                <h1>开启孩子的<span>编程之旅</span></h1>
-                <p class="subtitle">从兴趣到特长，让孩子在乐造AI发现自己的无限可能。我们用专业和爱心，陪伴每一个孩子的成长。</p>
+                <h1>开启孩子的<span>编程未来</span> ✨</h1>
+                <p class="subtitle">从兴趣到特长，让孩子在乐造AI发现自己的无限可能。我们用<span style="color:#06b6d4;font-weight:600">专业</span>和<span style="color:#f59e0b;font-weight:600">爱心</span>，陪伴每一个孩子的成长！</p>
                 <div class="hero-tags">
-                    <span class="hero-tag">✓ 6-16岁</span>
-                    <span class="hero-tag">✓ 小班教学</span>
-                    <span class="hero-tag">✓ 竞赛辅导</span>
+                    <span class="hero-tag">🌈 <strong>6-16岁</strong></span>
+                    <span class="hero-tag">👥 <strong>8人小班</strong></span>
+                    <span class="hero-tag">🏆 <strong>竞赛辅导</strong></span>
+                    <span class="hero-tag">🎁 <strong>免费试听</strong></span>
                 </div>
                 <div class="hero-btns">
-                    <a href="#contact" class="btn btn-primary">立即预约试听</a>
-                    <a href="#courses" class="btn btn-white">了解课程</a>
+                    <a href="#contact" class="btn btn-primary">🎯 立即预约试听</a>
+                    <a href="#courses" class="btn btn-white">查看课程</a>
                 </div>
             </div>
             <div class="hero-visual floating">
@@ -174,12 +224,12 @@
                         </div>
                     </div>
                     <div class="hero-card-body">
-                        "在乐造AI，我学会了用代码创造有趣的作品！
+                        "在乐造AI，我学会了用代码创造有趣的游戏！
                         老师说我很有编程天赋呢 🎉"
                     </div>
                     <div class="code-block">
                         <span class="keyword">print</span>(<span class="string">"Hello, World!"</span>)<br>
-                        <span class="keyword">print</span>(<span class="string">"我爱编程"</span>)
+                        <span class="keyword">print</span>(<span class="string">"我爱编程"</span>) ✨
                     </div>
                 </div>
             </div>
@@ -188,8 +238,8 @@
 
     <section class="features" id="features">
         <div class="section-header">
-            <span class="section-label">为什么选择我们</span>
-            <h2>专业·有趣·有温度</h2>
+            <span class="section-label">🌟 为什么选择我们</span>
+            <h2>专业 · 有趣 · 有温度</h2>
             <p>我们相信每个孩子都有独特的创造力</p>
         </div>
         <div class="features-grid">
@@ -201,27 +251,29 @@
             <div class="feature-card">
                 <div class="feature-icon">🏆</div>
                 <h3>竞赛获奖保障</h3>
-                <p>专业竞赛辅导团队，多年信奥赛经验，累计帮助学员获得50+奖项</p>
+                <p>专业竞赛辅导团队，多年信奥赛经验，累计帮助学员获得<strong>50+奖项</strong></p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💡</div>
                 <h3>趣味激发兴趣</h3>
-                <p>游戏化教学方式，让孩子在快乐中学习，爱上编程</p>
+                <p>游戏化教学方式，让孩子在快乐中学习，爱上编程！</p>
             </div>
         </div>
     </section>
 
     <section class="courses" id="courses">
         <div class="section-header">
-            <span class="section-label">课程体系</span>
-            <h2>分龄体系·因材施教</h2>
+            <span class="section-label">📚 课程体系</span>
+            <h2>分龄体系 · 因材施教</h2>
             <p>覆盖6-16岁全年龄段，总有一款适合您的孩子</p>
         </div>
         <div class="course-grid">
             <div class="course-card">
-                <div class="course-header scratch">🧩</div>
+                <div class="course-header scratch">
+                    <span class="emoji">🧩</span>
+                </div>
                 <div class="course-body">
-                    <span class="course-level scratch">入门</span>
+                    <span class="course-level scratch">🌱 入门</span>
                     <h3>Scratch图形编程</h3>
                     <p>适合6-8岁，通过拖拽式编程培养逻辑思维，激发创造力</p>
                     <div class="course-info">
@@ -231,9 +283,11 @@
                 </div>
             </div>
             <div class="course-card">
-                <div class="course-header python">🐍</div>
+                <div class="course-header python">
+                    <span class="emoji">🐍</span>
+                </div>
                 <div class="course-body">
-                    <span class="course-level python">进阶</span>
+                    <span class="course-level python">🌿 进阶</span>
                     <h3>Python编程</h3>
                     <p>适合9-12岁，学习真正的编程语言，培养计算思维和问题解决能力</p>
                     <div class="course-info">
@@ -243,11 +297,13 @@
                 </div>
             </div>
             <div class="course-card">
-                <div class="course-header cpp">🚀</div>
+                <div class="course-header cpp">
+                    <span class="emoji">🚀</span>
+                </div>
                 <div class="course-body">
-                    <span class="course-level cpp">竞赛</span>
+                    <span class="course-level cpp">🌲 竞赛</span>
                     <h3>C++信奥赛辅导</h3>
-                    <p>适合12-16岁，系统算法学习，冲击CSP-J/S获奖</p>
+                    <p>适合12-16岁，系统算法学习，冲击CSP-J/S获奖！</p>
                     <div class="course-info">
                         <span>📅 80课时</span>
                         <span>👨 12-16岁</span>
@@ -260,8 +316,8 @@
     <!-- 校区环境 -->
     <section class="campus" id="campus">
         <div class="section-header">
-            <span class="section-label">校区环境</span>
-            <h2>眼见为实·欢迎参观</h2>
+            <span class="section-label">🏠 校区环境</span>
+            <h2>眼见为实 · 欢迎参观</h2>
             <p>河源首家少儿编程科技馆，让孩子爱上的学习空间</p>
         </div>
         <div class="campus-show">
@@ -296,31 +352,42 @@
         </div>
     </section>
 
-    <style>
-        .campus{padding:100px 24px;background:linear-gradient(180deg,#f8fafc,#fff)}
-        .campus-show{position:relative;max-width:1000px;margin:0 auto 50px;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.15)}
-        .campus-hero-img{width:100%;display:block;height:auto}
-        .campus-overlay{position:absolute;bottom:0;left:0;right:0;padding:40px;background:linear-gradient(transparent,rgba(0,0,0,0.7))}
-        .campus-badge{display:flex;align-items:center;gap:16px;background:white;padding:16px 24px;border-radius:16px;max-width:400px}
-        .badge-icon{font-size:2.5rem}
-        .badge-text h4{font-size:1.2rem;font-weight:700;color:#1e293b;margin-bottom:4px}
-        .badge-text p{font-size:0.85rem;color:#64748b}
-        .campus-features{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
-        .campus-feature{display:flex;align-items:center;gap:10px;padding:12px 24px;background:white;border-radius:50px;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
-        .cf-icon{font-size:1.5rem}
-        .cf-text{font-size:1rem;font-weight:500;color:#1e293b}
-        @media(max-width:768px){
-            .campus-features{gap:12px}
-            .campus-feature{padding:10px 16px}
-            .badge-text{display:none}
-        }
-    </style>
+    <!-- 荣誉展示 -->
+    <section class="honors" id="honors">
+        <div class="section-header">
+            <span class="section-label">🏆 学员荣誉</span>
+            <h2>实力见证 · 硕果累累</h2>
+            <p>每一次获奖都是孩子成长的证明</p>
+        </div>
+        <div class="honors-grid">
+            <div class="honor-card">
+                <div class="honor-icon">🥇</div>
+                <h4>CSP-J/S</h4>
+                <p>获奖学员 20+</p>
+            </div>
+            <div class="honor-card">
+                <div class="honor-icon">🎨</div>
+                <h4>Scratch大赛</h4>
+                <p>获奖学员 15+</p>
+            </div>
+            <div class="honor-card">
+                <div class="honor-icon">🤖</div>
+                <h4>机器人比赛</h4>
+                <p>获奖学员 10+</p>
+            </div>
+            <div class="honor-card">
+                <div class="honor-icon">🌟</div>
+                <h4>其他赛事</h4>
+                <p>获奖学员 15+</p>
+            </div>
+        </div>
+    </section>
 
     <section class="about" id="about">
         <div class="about-inner">
             <div class="section-header">
-                <span class="section-label">关于我们</span>
-                <h2>乐造AI科技教育中心</h2>
+                <span class="section-label">💛 关于我们</span>
+                <h2>乐造AI少儿编程</h2>
             </div>
             <p>我们是一家专注于少儿编程教育的机构，位于河源。创始团队拥有多年互联网从业经验，深知编程对孩子未来发展的重要性。我们希望通过趣味性的课程设计和项目实践，帮助孩子在掌握编程技能的同时，培养解决问题的能力、创新思维和团队协作精神。</p>
             <div class="about-stats">
@@ -329,7 +396,7 @@
                     <div class="stat-label">累计学员</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num">50+</div>
+                    <div class="stat-num">60+</div>
                     <div class="stat-label">获奖证书</div>
                 </div>
                 <div class="stat-item">
@@ -342,14 +409,14 @@
 
     <section class="contact" id="contact">
         <div class="contact-inner">
-            <h2>让孩子赢在起跑线</h2>
-            <p>免费预约试听课，让孩子体验编程的乐趣</p>
-            <a href="wechat:添加微信" class="btn btn-primary" style="background:white;color:#3b82f6;font-size:1.1rem;padding:16px 48px;">添加微信咨询</a>
+            <h2>🎮 让孩子赢在起跑线</h2>
+            <p>🌟 免费预约试听课，让孩子体验编程的乐趣！</p>
+            <a href="wechat:添加微信" class="btn btn-white" style="font-size:1.2rem;padding:18px 56px;">📱 添加微信咨询</a>
         </div>
     </section>
 
     <footer>
-        <p>© 2024 乐造AI科技教育中心 | 地址：河源市源城区 | 电话：添加微信咨询</p>
+        <p>© 2024 乐造AI少儿编程 | 地址：河源市源城区 | 📱 添加微信咨询</p>
     </footer>
 </body>
 </html>
