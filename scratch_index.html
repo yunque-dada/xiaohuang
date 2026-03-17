@@ -15,20 +15,14 @@
         token: localStorage.getItem("token") || "",
         username: JSON.parse(localStorage.getItem("user") || '{}').username || "Username"
       },
-      backpack:{
-        enable: true,
-        api: "/api/teaching/scratch/backpack",
-      },
-      cloudData:{
-        enable: false,
-        id: "create",
-      },
+      backpack:{ enable: true, api: "/api/teaching/scratch/backpack" },
+      cloudData:{ enable: false, id: "create" }
     };
   </script>
 </head>
 
 <body>
   <div id="app"></div>
-  <script src="gui.js"></script>
+  <script src="lib.min.js"></script>
 </body>
 </html>
