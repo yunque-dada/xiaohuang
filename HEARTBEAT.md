@@ -1,6 +1,67 @@
 # HEARTBEAT.md
 
-## ⚙️ 技能自动触发器
+## 定时心跳任务（每小时自动检查）
+
+**执行时间：** 每小时一次（08:00-23:00）
+
+### 检查清单
+
+| 时间 | 检查项 | 操作 |
+|------|--------|------|
+| 08:00 | 服务器状态 | ss -tln 检查3000/8608端口 |
+| 08:00 | 待办事项 | 检查MEMORY.md |
+| 12:00 | 服务器状态 | 快速检查 |
+| 20:00 | 服务器状态 | 全面检查 |
+| 20:00 | 记忆整理 | 更新当日记录 |
+
+### 自我进化内容（每次心跳执行）
+
+**1. 错误自检**
+- 检查上一次执行是否有错误
+- 记录到 .learnings/ERRORS.md
+
+**2. 技能使用复盘**
+- 这次用了哪些技能？
+- 效果如何？
+- 有没有更好的技能？
+
+**3. 知识更新**
+- 有没有学到新知识？
+- 需要更新到 memory/ 吗？
+
+**4. 记忆维护**
+- 回顾最近3天的memory/
+- 把重要的晋升到MEMORY.md
+
+### 执行流程
+
+```
+心跳触发
+    ↓
+1. 检查服务器端口（3000/8608）
+    ↓
+2. 自我进化（每5小时执行）
+   ├── 错误自检 → 记录到.learnings/
+   ├── 技能复盘 → 效果评估
+   └── 知识更新 → 更新memory/
+    ↓
+3. 记忆维护
+   └── 回顾3天内存活 → 晋升重要到MEMORY.md
+    ↓
+4. 汇报状态（如有异常）
+```
+
+### 定时自我进化（每5小时）
+
+```bash
+# 创建自我进化脚本
+wget -O /tmp/self_evolution.sh https://raw.githubusercontent.com/yunque-dada/xiaohuang/master/self_evolution.sh
+
+# 添加crontab（每5小时执行）
+echo "0 */5 * * * /tmp/self_evolution.sh" >> /var/spool/cron/crontabs/root
+```
+
+### 不在23:00-08:00执行心跳（休息时间）
 
 **每次收到用户消息时，自动判断任务类型并触发相应技能：**
 
@@ -107,3 +168,59 @@
 ### 注意：
 - 汇报时间仅在 08:00-23:00
 - 需要用户指定具体的汇报内容和数据来源
+
+---
+
+## 📋 每日自我检查（每天一次）
+
+**检查时间**：每天首次 heartbeat 时
+
+**检查内容**：
+
+| 检查项 | 操作 |
+|--------|------|
+| 1. 记忆文件 | 检查昨天有没有没完成的任务 |
+| 2. 待办事项 | 查看 MEMORY.md 里的待办 |
+| 3. 问题复盘 | 想想今天有没有遇到问题 |
+| 4. 技能改进 | 有没有可以优化的地方 |
+
+---
+
+## 🔌 连接保持（每10分钟）
+
+**目的**：防止飞书连接因长时间不活动断开
+
+**检查内容**：
+- 定时发送轻量级消息保持连接
+- 仅在 08:00-23:00 执行
+- 消息内容：简短的日常问候或状态更新
+
+**实现方式**：
+- OpenClaw heartbeat 机制
+- 每 10 分钟检查一次
+- 如果超过 5 分钟没收到用户消息，发送心跳
+
+---
+
+## ⚙️ 后台自动安装技能（每5分钟）
+
+**目的**：后台自动安装 ClawHub Top 100 技能
+
+**检查方式**：
+- 每 5 分钟检查一次
+- 仅在 08:00-23:00 执行
+- 检查待安装列表，安装下一个
+
+**待安装技能列表**：
+```
+sonoscli, stock-analysis, clawnotes, desktop-control, gmail, blogwatcher, imap-smtp-email, outlook-graph, web-search-exa, youtube-api-skill, stock-market-pro, caldav-calendar, markdown-converter, stripe, agentmail, linear, vercel, cloudflare, playwright-mcp, apple-notes, google-slides, salesforce, webhook 等
+```
+
+**实现方式**：
+- 在 heartbeat 中执行
+- 每次安装一个，如果成功则记录到已安装列表
+- 如果遇到 Rate Limit，等待后重试
+
+**记录位置**：memory/2026-03-11.md
+
+**记录到**：memory/YYYY-MM-DD.md
