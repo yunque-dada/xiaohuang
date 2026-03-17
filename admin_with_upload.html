@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐造编程 - 管理后台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="margin:0;font-family:system-ui,sans-serif;background:#f8fafc">
+  <div style="display:flex">
+    <aside style="width:260px;background:#1e293b;height:100vh;position:fixed;border-right:1px solid #334155;padding:24px;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px">
+        <div style="width:40px;height:40px;background:linear-gradient(135deg,#8b5cf6,#6366f1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:18px">管</div>
+        <span style="font-size:20px;font-weight:700;color:white">管理后台</span>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:4px;flex:1">
+        <a href="#" onclick="showSection('dashboard')" id="nav-dashboard" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;text-decoration:none"><i class="fas fa-tachometer-alt"></i> 控制台</a>
+        <a href="#" onclick="showSection('users')" id="nav-users" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;color:#94a3b8;text-decoration:none"><i class="fas fa-users"></i> 用户管理</a>
+        <a href="#" onclick="showSection('roles')" id="nav-roles" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;color:#94a3b8;text-decoration:none"><i class="fas fa-user-tag"></i> 角色管理</a>
+        <a href="#" onclick="showSection('courses')" id="nav-courses" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;color:#94a3b8;text-decoration:none"><i class="fas fa-book"></i> 课程管理</a>
+        <a href="#" onclick="showSection('projects')" id="nav-projects" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;color:#94a3b8;text-decoration:none"><i class="fas fa-folder-open"></i> 作品管理</a>
+        <a href="#" onclick="showSection('scratch')" id="nav-scratch" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;color:#94a3b8;text-decoration:none"><i class="fas fa-cat"></i> Scratch资源</a>
+        <div style="margin-top:24px;padding-top:24px;border-top:1px solid #334155">
+          <a href="#" onclick="logout()" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;color:#94a3b8;text-decoration:none"><i class="fas fa-sign-out-alt"></i> 退出登录</a>
+        </div>
+      </nav>
+    </aside>
+    
+    <main style="margin-left:260px;padding:32px;flex:1">
+      <h1 id="pageTitle" style="font-size:24px;font-weight:700;color:#111;margin-bottom:32px">控制台</h1>
+      
+      <!-- 控制台 -->
+      <div id="content-dashboard">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+          <div style="background:white;border-radius:16px;padding:20px;border:1px solid #e2e8f0"><div style="font-size:28px;font-weight:700;color:#8b5cf6" id="stat-users">-</div><div style="color:#6b7280">用户数</div></div>
+          <div style="background:white;border-radius:16px;padding:20px;border:1px solid #e2e8f0"><div style="font-size:28px;font-weight:700;color:#10b981" id="stat-admins">-</div><div style="color:#6b7280">管理员</div></div>
+          <div style="background:white;border-radius:16px;padding:20px;border:1px solid #e2e8f0"><div style="font-size:28px;font-weight:700;color:#f59e0b" id="stat-teachers">-</div><div style="color:#6b7280">老师</div></div>
+          <div style="background:white;border-radius:16px;padding:20px;border:1px solid #e2e8f0"><div style="font-size:28px;font-weight:700;color:#3b82f6" id="stat-students">-</div><div style="color:#6b7280">学生</div></div>
+        </div>
+      </div>
+      
+      <!-- 用户管理 -->
+      <div id="content-users" style="display:none">
+        <div style="background:white;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden">
+          <div style="padding:20px;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between">
+            <h2 style="font-size:16px;font-weight:700">用户列表</h2>
+            <button onclick="showAddUserModal()" style="padding:8px 16px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;border-radius:8px;border:none;cursor:pointer">添加用户</button>
+          </div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr style="background:#f8fafc"><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">用户</th><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">角色</th><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">操作</th></tr></thead>
+            <tbody id="usersTableBody"><tr><td colspan="3" style="padding:40px;text-align:center">加载中...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- 角色管理 -->
+      <div id="content-roles" style="display:none">
+        <div style="background:white;border-radius:16px;padding:24px;border:1px solid #e2e8f0;margin-bottom:24px">
+          <h2 style="font-size:18px;font-weight:700;margin-bottom:16px">角色说明</h2>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+            <div style="padding:16px;background:#f8fafc;border-radius:12px"><div style="font-weight:600;color:#7c3aed;margin-bottom:8px">管理员</div><div style="font-size:14px;color:#6b7280">拥有所有权限</div></div>
+            <div style="padding:16px;background:#f8fafc;border-radius:12px"><div style="font-weight:600;color:#059669;margin-bottom:8px">老师</div><div style="font-size:14px;color:#6b7280">管理课程、作品</div></div>
+            <div style="padding:16px;background:#f8fafc;border-radius:12px"><div style="font-weight:600;color:#d97706;margin-bottom:8px">学生</div><div style="font-size:14px;color:#6b7280">学习课程</div></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 课程管理 -->
+      <div id="content-courses" style="display:none">
+        <div style="background:white;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden">
+          <div style="padding:20px;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between">
+            <h2 style="font-size:16px;font-weight:700">课程列表</h2>
+            <button onclick="showAddCourseModal()" style="padding:8px 16px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;border-radius:8px;border:none;cursor:pointer">添加课程</button>
+          </div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr style="background:#f8fafc"><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">课程名称</th><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">课时</th><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">操作</th></tr></thead>
+            <tbody id="coursesTableBody"><tr><td colspan="3" style="padding:40px;text-align:center">加载中...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- 作品管理 -->
+      <div id="content-projects" style="display:none">
+        <div style="background:white;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden">
+          <div style="padding:20px;border-bottom:1px solid #e2e8f0">
+            <h2 style="font-size:16px;font-weight:700">学生作品列表</h2>
+          </div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr style="background:#f8fafc"><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">作品名称</th><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">作者</th><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">创建时间</th><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">操作</th></tr></thead>
+            <tbody id="projectsTableBody"><tr><td colspan="4" style="padding:40px;text-align:center">加载中...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Scratch资源管理 -->
+      <div id="content-scratch" style="display:none">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:24px">
+          <div onclick="showResourceTab('sprites')" id="tab-sprites" style="background:white;border-radius:16px;padding:24px;border:2px solid #8b5cf6;cursor:pointer;text-align:center">
+            <i class="fas fa-cat" style="font-size:32px;color:#8b5cf6;margin-bottom:12px"></i>
+            <div style="font-weight:600">角色库</div>
+            <div style="font-size:12px;color:#6b7280" id="sprites-count">0 个</div>
+          </div>
+          <div onclick="showResourceTab('costumes')" id="tab-costumes" style="background:white;border-radius:16px;padding:24px;border:1px solid #e2e8f0;cursor:pointer;text-align:center">
+            <i class="fas fa-tshirt" style="font-size:32px;color:#10b981;margin-bottom:12px"></i>
+            <div style="font-weight:600">造型库</div>
+            <div style="font-size:12px;color:#6b7280" id="costumes-count">0 个</div>
+          </div>
+          <div onclick="showResourceTab('backdrops')" id="tab-backdrops" style="background:white;border-radius:16px;padding:24px;border:1px solid #e2e8f0;cursor:pointer;text-align:center">
+            <i class="fas fa-image" style="font-size:32px;color:#3b82f6;margin-bottom:12px"></i>
+            <div style="font-weight:600">背景库</div>
+            <div style="font-size:12px;color:#6b7280" id="backdrops-count">0 个</div>
+          </div>
+        </div>
+        
+        <div id="resource-content" style="background:white;border-radius:16px;border:1px solid #e2e8f0;display:none">
+          <div style="padding:20px;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center">
+            <h2 id="resource-title" style="font-size:16px;font-weight:700">角色库</h2>
+            <button onclick="showAddResourceModal()" style="padding:8px 16px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;border-radius:8px;border:none;cursor:pointer"><i class="fas fa-upload"></i> 上传图片</button>
+          </div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr style="background:#f8fafc"><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">名称</th><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">MD5</th><th style="padding:12px 20px;text-align:left;font-size:12px;color:#6b7280">操作</th></tr></thead>
+            <tbody id="resourceTableBody"><tr><td colspan="3" style="padding:40px;text-align:center">加载中...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 添加用户弹窗 -->
+  <div id="addUserModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center">
+    <div style="background:white;border-radius:16px;padding:24px;width:400px">
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:20px">添加用户</h3>
+      <input type="text" id="newUsername" placeholder="用户名" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:12px">
+      <input type="text" id="newNickname" placeholder="昵称" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:12px">
+      <input type="password" id="newPassword" placeholder="密码" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:12px">
+      <select id="newRole" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:20px">
+        <option value="student">学生</option>
+        <option value="teacher">老师</option>
+        <option value="admin">管理员</option>
+      </select>
+      <div style="display:flex;gap:12px;justify-content:flex-end">
+        <button onclick="closeModal('addUserModal')" style="padding:10px 20px;border:1px solid #e2e8f0;background:white;border-radius:8px;cursor:pointer">取消</button>
+        <button onclick="addUser()" style="padding:10px 20px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;border-radius:8px;border:none;cursor:pointer">添加</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 添加课程弹窗 -->
+  <div id="addCourseModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center">
+    <div style="background:white;border-radius:16px;padding:24px;width:400px">
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:20px">添加课程</h3>
+      <input type="text" id="newCourseName" placeholder="课程名称" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:12px">
+      <textarea id="newCourseDesc" placeholder="课程描述" rows="3" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:12px;resize:none"></textarea>
+      <input type="number" id="newCourseHours" placeholder="课时数" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:12px">
+      <select id="newCourseLevel" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:20px">
+        <option value="入门">入门</option>
+        <option value="进阶">进阶</option>
+        <option value="中级">中级</option>
+        <option value="高级">高级</option>
+      </select>
+      <div style="display:flex;gap:12px;justify-content:flex-end">
+        <button onclick="closeModal('addCourseModal')" style="padding:10px 20px;border:1px solid #e2e8f0;background:white;border-radius:8px;cursor:pointer">取消</button>
+        <button onclick="addCourse()" style="padding:10px 20px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;border-radius:8px;border:none;cursor:pointer">添加</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 上传资源弹窗 -->
+  <div id="addResourceModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center">
+    <div style="background:white;border-radius:16px;padding:24px;width:500px">
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:20px"><i class="fas fa-upload"></i> 上传Scratch资源</h3>
+      <div style="margin-bottom:16px">
+        <label style="display:block;margin-bottom:8px;font-weight:500">资源类型</label>
+        <div id="upload-type-label" style="padding:12px;background:#f8fafc;border-radius:8px;color:#6b7280">角色库</div>
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="display:block;margin-bottom:8px;font-weight:500">选择图片</label>
+        <input type="file" id="resourceFile" accept=".png,.jpg,.jpeg,.svg" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px">
+        <p style="font-size:12px;color:#6b7280;margin-top:4px">支持 PNG、JPG、SVG 格式</p>
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="display:block;margin-bottom:8px;font-weight:500">资源名称（可选）</label>
+        <input type="text" id="resourceName" placeholder="留空则使用文件名" style="width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:8px">
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end">
+        <button onclick="closeModal('addResourceModal')" style="padding:10px 20px;border:1px solid #e2e8f0;background:white;border-radius:8px;cursor:pointer">取消</button>
+        <button onclick="uploadResource()" style="padding:10px 20px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;border-radius:8px;border:none;cursor:pointer"><i class="fas fa-upload"></i> 上传</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+const API = '';
+const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user") || "{}");
+let currentResourceType = 'sprites';
+
+if (!token || user.role !== "admin") { alert("只有管理员才能访问"); location.href = "admin-login.html"; }
+
+async function loadDashboard() {
+  const res = await fetch(API + "/api/admin/users", { headers: { "Authorization": "Bearer " + token } });
+  const users = await res.json();
+  document.getElementById("stat-users").textContent = users.length;
+  document.getElementById("stat-admins").textContent = users.filter(u => u.role === "admin").length;
+  document.getElementById("stat-teachers").textContent = users.filter(u => u.role === "teacher").length;
+  document.getElementById("stat-students").textContent = users.filter(u => u.role === "student").length;
+}
+
+async function loadUsers() {
+  const res = await fetch(API + "/api/admin/users", { headers: { "Authorization": "Bearer " + token } });
+  const users = await res.json();
+  const tbody = document.getElementById("usersTableBody");
+  if (users.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="padding:40px;text-align:center">暂无用户</td></tr>'; return; }
+  tbody.innerHTML = users.map(u => `<tr style="border-top:1px solid #e2e8f0"><td style="padding:16px 20px"><div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;background:linear-gradient(135deg,#8b5cf6,#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold">${(u.nickname || u.username)[0]}</div><div><div style="font-weight:500">${u.nickname || u.username}</div><div style="font-size:12px;color:#6b7280">${u.username}</div></div></div></td><td style="padding:16px 20px"><span style="padding:4px 12px;background:${u.role==='admin'?'#ede9fe':u.role==='teacher'?'#d1fae5':'#fef3c7'};color:${u.role==='admin'?'#7c3aed':u.role==='teacher'?'#059669':'#d97706'};border-radius:20px;font-size:12px;font-weight:500">${u.role==='admin'?'管理员':u.role==='teacher'?'老师':'学生'}</span></td><td style="padding:16px 20px"><button onclick="deleteUser(${u.id})" style="padding:6px 12px;background:#fee2e2;border:none;border-radius:6px;cursor:pointer;color:#ef4444"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+}
+
+async function loadCourses() {
+  const res = await fetch(API + "/api/courses");
+  const courses = await res.json();
+  const tbody = document.getElementById("coursesTableBody");
+  tbody.innerHTML = courses.map(c => `<tr style="border-top:1px solid #e2e8f0"><td style="padding:16px 20px;font-weight:500">${c.name}</td><td style="padding:16px 20px;color:#6b7280">${c.hours}课时</td><td style="padding:16px 20px"><button onclick="deleteCourse(${c.id})" style="padding:6px 12px;background:#fee2e2;border:none;border-radius:6px;cursor:pointer;color:#ef4444"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+}
+
+async function loadProjects() {
+  const res = await fetch(API + "/api/admin/projects", { headers: { "Authorization": "Bearer " + token } });
+  const projects = await res.json();
+  const tbody = document.getElementById("projectsTableBody");
+  if (projects.length === 0) { tbody.innerHTML = '<tr><td colspan="4" style="padding:40px;text-align:center">暂无作品</td></tr>'; return; }
+  tbody.innerHTML = projects.map(p => `<tr style="border-top:1px solid #e2e8f0"><td style="padding:16px 20px;font-weight:500">${p.name || '未命名'}</td><td style="padding:16px 20px">${p.nickname || p.username || '未知'}</td><td style="padding:16px 20px;color:#6b7280">${p.createdAt ? new Date(p.createdAt).toLocaleString() : '-'}</td><td style="padding:16px 20px"><button onclick="deleteProject(${p.id})" style="padding:6px 12px;background:#fee2e2;border:none;border-radius:6px;cursor:pointer;color:#ef4444"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+}
+
+function showResourceTab(type) {
+  currentResourceType = type;
+  document.getElementById('resource-content').style.display = 'block';
+  const typeNames = { sprites: '角色库', costumes: '造型库', backdrops: '背景库' };
+  document.getElementById('resource-title').textContent = typeNames[type];
+  document.getElementById('upload-type-label').textContent = typeNames[type];
+  ['sprites', 'costumes', 'backdrops'].forEach(t => {
+    const el = document.getElementById('tab-' + t);
+    el.style.border = t === type ? '2px solid #8b5cf6' : '1px solid #e2e8f0';
+  });
+  loadResources(type);
+}
+
+function loadResources(type) {
+  fetch('/static/json_index/' + type + '.json').then(r => r.json()).then(data => {
+    document.getElementById(type + '-count').textContent = data.length + ' 个';
+    const tbody = document.getElementById('resourceTableBody');
+    if (data.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="padding:40px;text-align:center">暂无资源</td></tr>'; return; }
+    tbody.innerHTML = data.map(r => `<tr style="border-top:1px solid #e2e8f0"><td style="padding:16px 20px;font-weight:500">${r.name}</td><td style="padding:16px 20px;color:#6b7280;font-family:monospace;font-size:12px">${r.costumes && r.costumes[0] ? r.costumes[0].assetId.substring(0,16) + '...' : '-'}</td><td style="padding:16px 20px"><button onclick="deleteResource('${type}','${r.name}')" style="padding:6px 12px;background:#fee2e2;border:none;border-radius:6px;cursor:pointer;color:#ef4444"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+  }).catch(() => {
+    document.getElementById(type + '-count').textContent = '0 个';
+    document.getElementById('resourceTableBody').innerHTML = '<tr><td colspan="3" style="padding:40px;text-align:center">加载失败</td></tr>';
+  });
+}
+
+async function uploadResource() {
+  const fileInput = document.getElementById('resourceFile');
+  const file = fileInput.files[0];
+  if (!file) { alert('请选择图片文件'); return; }
+  
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('type', currentResourceType);
+  formData.append('name', document.getElementById('resourceName').value || file.name.replace(/\.[^.]+$/, ''));
+  
+  try {
+    const res = await fetch('/api/admin/scratch/upload', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + token },
+      body: formData
+    });
+    const data = await res.json();
+    if (data.error) { alert(data.error); }
+    else { alert('上传成功！'); closeModal('addResourceModal'); loadResources(currentResourceType); }
+  } catch(e) { alert('上传失败: ' + e.message); }
+}
+
+function showAddUserModal() { document.getElementById('addUserModal').style.display = 'flex'; }
+function showAddCourseModal() { document.getElementById('addCourseModal').style.display = 'flex'; }
+function showAddResourceModal() { 
+  document.getElementById('addResourceModal').style.display = 'flex'; 
+  document.getElementById('resourceFile').value = '';
+  document.getElementById('resourceName').value = '';
+}
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+async function addUser() {
+  const username = document.getElementById('newUsername').value.trim();
+  const nickname = document.getElementById('newNickname').value.trim();
+  const password = document.getElementById('newPassword').value;
+  const role = document.getElementById('newRole').value;
+  if (!username || !password) { alert('请填写用户名和密码'); return; }
+  const res = await fetch(API + '/api/admin/users', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify({ username, nickname, password, role }) });
+  const data = await res.json();
+  if (data.error) alert(data.error); else { alert('添加成功！'); closeModal('addUserModal'); loadUsers(); }
+}
+
+async function addCourse() {
+  const name = document.getElementById('newCourseName').value.trim();
+  const description = document.getElementById('newCourseDesc').value.trim();
+  const hours = parseInt(document.getElementById('newCourseHours').value) || 0;
+  const level = document.getElementById('newCourseLevel').value;
+  if (!name) { alert('请填写课程名称'); return; }
+  const res = await fetch(API + '/api/admin/courses', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify({ name, description, hours, level }) });
+  const data = await res.json();
+  if (data.error) alert(data.error); else { alert('添加成功！'); closeModal('addCourseModal'); loadCourses(); }
+}
+
+async function deleteUser(id) { if (!confirm('确定删除？')) return; const res = await fetch(API + '/api/admin/users/' + id, { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token } }); const data = await res.json(); if (data.error) alert(data.error); else { alert('删除成功'); loadUsers(); } }
+async function deleteCourse(id) { if (!confirm('确定删除？')) return; const res = await fetch(API + '/api/admin/courses/' + id, { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token } }); const data = await res.json(); if (data.error) alert(data.error); else { alert('删除成功'); loadCourses(); } }
+async function deleteProject(id) { if (!confirm('确定删除？')) return; const res = await fetch(API + '/api/admin/projects/' + id, { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token } }); const data = await res.json(); if (data.error) alert(data.error); else { alert('删除成功'); loadProjects(); } }
+
+function logout() { if (confirm('确定退出？')) { localStorage.clear(); location.href = 'admin-login.html'; } }
+
+function showSection(section) {
+  document.getElementById('content-dashboard').style.display = 'none';
+  document.getElementById('content-users').style.display = 'none';
+  document.getElementById('content-roles').style.display = 'none';
+  document.getElementById('content-courses').style.display = 'none';
+  document.getElementById('content-projects').style.display = 'none';
+  document.getElementById('content-scratch').style.display = 'none';
+  document.getElementById('content-' + section).style.display = 'block';
+  const titles = { dashboard: '控制台', users: '用户管理', roles: '角色管理', courses: '课程管理', projects: '作品管理', scratch: 'Scratch资源管理' };
+  document.getElementById('pageTitle').textContent = titles[section];
+  const navItems = ['dashboard', 'users', 'roles', 'courses', 'projects', 'scratch'];
+  navItems.forEach(item => {
+    const el = document.getElementById('nav-' + item);
+    if (item === section) { el.style.background = 'linear-gradient(135deg,#8b5cf6,#6366f1)'; el.style.color = 'white'; }
+    else { el.style.background = 'transparent'; el.style.color = '#94a3b8'; }
+  });
+  if (section === 'users') loadUsers();
+  if (section === 'courses') loadCourses();
+  if (section === 'projects') loadProjects();
+}
+
+loadDashboard();
+</script>
+</body>
+</html>
